@@ -1,0 +1,126 @@
+{
+	"name": "jlu",
+	"displayName": "JSON LangUpdates",
+	"description": "A extension to keep your json langs up to date",
+	"author": {
+		"name": "javiertrancoso",
+		"url": "https://javiertrancoso.online",
+		"email": "javiertrancosolara@gmail.com"
+	},
+	"publisher": "javiertrancoso",
+	"publishConfig": {
+		"access": "public"
+	},
+	"version": "1.0.0",
+	"engines": {
+		"vscode": "^1.55.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:jlu.runJLU"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "JSON LangUpdates",
+			"properties": {
+				"jlu.langFolderName": {
+					"type": "string",
+					"default": "lang",
+					"description": "Lang folder name, the extension will only work under this folder"
+				},
+				"jlu.autoSave": {
+					"type": "boolean",
+					"default": false,
+					"description": "Save the targets files and close the windows. Directly overwrite, you won't be able to easily undo thoose changes"
+				},
+				"jlu.target.arrayChecking": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable this option to check also arrays. (Array checking is made following the array order)"
+				},
+				"jlu.target.overwriting": {
+					"type": "boolean",
+					"default": true,
+					"description": "Overwries when the properties of the saving file are diferent types to the ones of the target language files"
+				},
+				"jlu.msg.loadedMsg": {
+					"type": "boolean",
+					"default": false,
+					"description": "Shows a message when the extensions is ready"
+				},
+				"jlu.msg.messaging": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enables all the info messages from this extension"
+				},
+				"jlu.msg.plainDifAlert": {
+					"type": "boolean",
+					"default": true,
+					"description": "Shows a message when a not identified plain value on an array is detected"
+				},
+				"jlu.target.todoTxt": {
+					"type": "string",
+					"default": "//TODO: translate",
+					"description": "Text that will replace for the waiting translation"
+				},
+				"jlu.target.todoTxtAddIndex": {
+					"type": "boolean",
+					"default": true,
+					"description": "When enabled will show the index of the array values at the target files"
+				},
+				"jlu.target.defaultOverwriteOption": {
+					"type": "string",
+					"default": "ask",
+					"enum": ["ask", "overwrite", "do nothing"],
+					"description": "Action to take when a target file is not a JSON"
+				},
+				"jlu.target.excludeNames": {
+					"type": "array",
+					"default": [],
+					"description": "These files won't be targets of the extension"
+				},
+				"jlu.format.indentSpaces": {
+					"type": "number",
+					"default": 1,
+					"description": "Number of repetitions of the 'indent string' on one indent"
+				},
+				"jlu.format.indentOption": {
+					"type": "string",
+					"default": "tab",
+					"enum": [
+						"tab",
+						"space",
+						"none"
+					],
+					"description": "Indent option used for formatting the target files"
+				}
+			}
+		},
+		"commands":{
+			"title": "Run JSON LangUpdates",
+			"command": "jlu.runJLU"
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.55.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"ramda": "^0.27.1"
+	}
+}
