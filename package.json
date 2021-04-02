@@ -18,6 +18,7 @@
 	"categories": [
 		"Other"
 	],
+	"repository": {"url": "https://github.com/javiertrancoso/langupdates"},
 	"activationEvents": [
 		"onCommand:jlu.runJLU"
 	],
